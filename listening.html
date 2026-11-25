@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening Practice | Korean Seekho</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#F7F3E9;color:#293B31;font-family:Arial,sans-serif;line-height:1.7}
+header,footer{background:#DCE7D8;text-align:center;padding:22px}
+header h1{color:#526B59;margin:0}
+nav{margin-top:12px}
+nav a{margin:7px;color:#526B59;text-decoration:none;font-weight:bold}
+.hero{text-align:center;background:#F3DCE2;padding:35px 15px}
+section{max-width:950px;margin:auto;padding:25px 6%}
+h2{text-align:center;color:#526B59}
+.card{background:white;border-radius:16px;padding:20px;margin:18px 0;box-shadow:0 3px 12px #00000010}
+.words{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}
+.word{background:#DCE7D8;border-radius:13px;padding:15px;text-align:center}
+.korean{font-size:27px;font-weight:bold;color:#526B59}
+button{background:#526B59;color:white;border:0;border-radius:22px;padding:10px 17px;cursor:pointer;margin:6px}
+button:disabled{opacity:.5}
+.quiz{background:#F3DCE2;padding:20px;border-radius:16px}
+.answer{display:block;width:100%;background:white;color:#293B31;border:1px solid #526B59;border-radius:10px;text-align:left;padding:13px;margin:9px 0}
+#feedback{font-weight:bold}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🌸 Korean Seekho 🇰🇷</h1>
+<p>Listen • Repeat • Learn</p>
+<nav>
+<a href="index.html">Home</a>
+<a href="lessons.html">Lessons</a>
+<a href="vocabulary.html">Vocabulary</a>
+<a href="videos.html">Videos</a>
+</nav>
+</header>
+
+<div class="hero">
+<h1>🎧 Korean Listening Practice</h1>
+<p>Listen to Korean words, repeat them and improve your listening skills!</p>
+</div>
+
+<section>
+<div class="card">
+<h2>🌷 How to Practice</h2>
+<p>1. Press the speaker button to hear a Korean word.</p>
+<p>2. Listen carefully to its pronunciation.</p>
+<p>3. Repeat the word aloud.</p>
+<p>4. Try the listening quiz below.</p>
+</div>
+
+<h2>🎵 Daily 10 Korean Words</h2>
+<p style="text-align:center">Day 01 – Basic Korean Vocabulary</p>
+
+<div class="words" id="wordList"></div>
+
+<div class="card" style="text-align:center">
+<h2>🔁 Listening Challenge</h2>
+<p>Choose any word, close your eyes and listen carefully. Can you remember its meaning?</p>
+<button onclick="playAll()">▶ Play All Words</button>
+<button onclick="stopAudio()">⏹ Stop Audio</button>
+</div>
+</section>
+
+<section>
+<h2>📝 Listening Quiz</h2>
+<div class="quiz">
+<p>Listen to the Korean word and select its correct English meaning.</p>
+<button onclick="playQuestion()">🔊 Play Word</button>
+<h3 id="question">Listen carefully and choose the answer.</h3>
+<div id="answers"></div>
+<p id="feedback"></p>
+<button id="next" onclick="nextQuestion()" style="display:none">Next Question →</button>
+<p id="score"></p>
+</div>
+</section>
+
+<footer>
+<h3>🌸 Korean Seekho 🇰🇷</h3>
+<p>Listen Every Day. Speak With Confidence.</p>
+<a href="index.html">← Back to Home</a>
+</footer>
+
+<script>
+const words=[
+{k:"안녕하세요",r:"Annyeonghaseyo",m:"Hello"},
+{k:"감사합니다",r:"Gamsahamnida",m:"Thank you"},
+{k:"사랑",r:"Sarang",m:"Love"},
+{k:"친구",r:"Chingu",m:"Friend"},
+{k:"학교",r:"Hakgyo",m:"School"},
+{k:"물",r:"Mul",m:"Water"},
+{k:"밥",r:"Bap",m:"Rice / Meal"},
+{k:"가족",r:"Gajok",m:"Family"},
+{k:"오늘",r:"Oneul",m:"Today"},
+{k:"내일",r:"Naeil",m:"Tomorrow"}
+];
+
+function speak(text){
+if(!('speechSynthesis' in window)){
+alert("Speech audio is not supported in this browser.");
+return;
+}
+speechSynthesis.cancel();
+let utterance=new SpeechSynthesisUtterance(text);
+utterance.lang="ko-KR";
+utterance.rate=0.8;
+let voices=speechSynthesis.getVoices();
+let koreanVoice=voices.find(v=>v.lang.toLowerCase().startsWith("ko"));
+if(koreanVoice)utterance.voice=koreanVoice;
+speechSynthesis.speak(utterance);
+}
+
+const list=document.getElementById("wordList");
+words.forEach((w,i)=>{
+let div=document.createElement("div");
+div.className="word";
+div.innerHTML=
+'<div style="font-size:13px">WORD '+(i+1)+'</div>'+
+'<div class="korean">'+w.k+'</div>'+
+'<p>'+w.r+'</p><p>'+w.m+'</p>'+
+'<button onclick="speak('+JSON.stringify(w.k)+')">🔊 Listen</button>';
+list.appendChild(div);
+});
+
+function playAll(){
+let i=0;
+speechSynthesis.cancel();
+function next(){
+if(i>=words.length)return;
+let u=new SpeechSynthesisUtterance(words[i].k);
+u.lang="ko-KR";
+u.rate=0.8;
+u.onend=()=>{i++;setTimeout(next,500)};
+speechSynthesis.speak(u);
+}
+next();
+}
+function stopAudio(){
+if('speechSynthesis' in window)speechSynthesis.cancel();
+}
+
+let quizWords=[...words];
+let current=0,points=0,answered=false;
+function loadQuestion(){
+answered=false;
+document.getElementById("question").textContent="Question "+(current+1)+" of "+quizWords.length;
+document.getElementById("feedback").textContent="";
+document.getElementById("next").style.display="none";
+document.getElementById("score").textContent="Score: "+points;
+let correct=quizWords[current];
+let options=[correct.m];
+while(options.length<3){
+let choice=words[Math.floor(Math.random()*words.length)].m;
+if(!options.includes(choice))options.push(choice);
+}
+options.sort(()=>Math.random()-.5);
+let box=document.getElementById("answers");
+box.innerHTML="";
+options.forEach(option=>{
+let b=document.createElement("button");
+b.className="answer";
+b.textContent=option;
+b.onclick=()=>checkAnswer(option,correct.m);
+box.appendChild(b);
+});
+}
+function playQuestion(){
+speak(quizWords[current].k);
+}
+function checkAnswer(choice,correct){
+if(answered)return;
+answered=true;
+if(choice===correct){
+points++;
+document.getElementById("feedback").textContent="🌸 Correct! Great listening!";
+}else{
+document.getElementById("feedback").textContent="Correct meaning: "+correct;
+}
+document.querySelectorAll(".answer").forEach(b=>b.disabled=true);
+document.getElementById("next").style.display="inline-block";
+document.getElementById("next").textContent=
+current===quizWords.length-1?"See My Result":"Next Question →";
+}
+function nextQuestion(){
+current++;
+if(current<quizWords.length){
+loadQuestion();
+}else{
+document.querySelector(".quiz").innerHTML=
+"<h2>🎉 Listening Quiz Completed!</h2><h3>Your Score: "+points+" / "+quizWords.length+"</h3><p>Keep practising your Korean listening skills!</p><button onclick='location.reload()'>Try Again</button>";
+}
+}
+loadQuestion();
+</script>
+</body>
+</html>
