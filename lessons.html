@@ -4,128 +4,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lessons Index | Korean Seekho</title>
+<title>Lesson Index | Korean Seekho</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#F7F3E9;color:#293B31;font-family:Arial,sans-serif;line-height:1.7}
+body{margin:0;background:#F7F3E9;color:#293B31;font-family:Arial,sans-serif;line-height:1.6}
 header,footer{background:#DCE7D8;text-align:center;padding:22px}
-header h1{color:#526B59;margin:0}
-nav{margin-top:12px}
-nav a{margin:8px;color:#526B59;text-decoration:none;font-weight:bold}
-.hero{text-align:center;background:#F3DCE2;padding:35px 15px}
-section{max-width:1000px;margin:auto;padding:30px 6%}
-h2{text-align:center;color:#526B59}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:white;border-radius:15px;padding:20px;box-shadow:0 3px 12px #00000010}
-.card h3{color:#526B59}
+h1,h2{color:#526B59}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:15px}
+nav a{color:#526B59;text-decoration:none;font-weight:bold}
+section{max-width:950px;margin:auto;padding:25px 15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:white;padding:20px;border-radius:15px;text-align:center;box-shadow:0 3px 12px #00000010}
 .btn{display:inline-block;background:#526B59;color:white;text-decoration:none;padding:9px 17px;border-radius:22px;margin-top:8px}
-.progress{background:#ddd;height:14px;border-radius:20px;overflow:hidden}
-#bar{background:#78977E;width:0;height:100%;transition:.3s}
-.lesson{background:white;padding:16px;border-radius:12px;margin:12px 0}
-.lesson label{display:flex;gap:10px;align-items:center}
-input{accent-color:#526B59}
+.hero{text-align:center;background:#F3DCE2;padding:30px 15px}
 </style>
 </head>
 <body>
 
 <header>
 <h1>🌸 Korean Seekho 🇰🇷</h1>
-<p>Your Complete Korean Learning Library</p>
 <nav>
 <a href="index.html">Home</a>
-<a href="hangul.html">Hangul</a>
+<a href="lessons.html">Lessons</a>
 <a href="videos.html">Videos</a>
+<a href="vocabulary.html">Vocabulary</a>
 </nav>
 </header>
 
 <div class="hero">
-<h1>📚 Lessons Index</h1>
-<p>Explore Korean language lessons from beginner to advanced level.</p>
+<h1>📚 Korean Lesson Index</h1>
+<p>Choose a topic and start learning Korean!</p>
 </div>
 
 <section>
-<h2>🌷 Choose Your Learning Path</h2>
 <div class="grid">
 
 <div class="card">
-<h3>01. Hangul Alphabet</h3>
-<p>Learn Korean consonants, vowels, syllable blocks and pronunciation.</p>
+<h2>🔤 Hangul Alphabet</h2>
+<p>Learn Korean letters, vowels and consonants.</p>
 <a class="btn" href="hangul.html">Open Lesson</a>
 </div>
 
 <div class="card">
-<h3>02. Korean Vocabulary</h3>
-<p>Learn everyday words, numbers, colours, food and useful expressions.</p>
+<h2>📖 Vocabulary</h2>
+<p>Build your Korean vocabulary with useful words.</p>
 <a class="btn" href="vocabulary.html">Open Lesson</a>
 </div>
 
 <div class="card">
-<h3>03. Daily Conversations</h3>
-<p>Practice greetings, introductions and simple everyday conversations.</p>
-<a class="btn" href="conversation.html">Open Lesson</a>
+<h2>🎧 Listening Practice</h2>
+<p>Improve your Korean listening skills.</p>
+<a class="btn" href="listening.html">Start Listening</a>
 </div>
 
 <div class="card">
-<h3>04. Korean Grammar</h3>
-<p>Understand particles, sentence order, verbs and basic grammar.</p>
-<a class="btn" href="grammar.html">Open Lesson</a>
+<h2>🎤 Speaking Practice</h2>
+<p>Practise pronunciation and record your voice.</p>
+<a class="btn" href="speaking.html">Start Speaking</a>
 </div>
 
 <div class="card">
-<h3>05. Korean Pronunciation</h3>
-<p>Explore Korean sounds, pronunciation rules and reading practice.</p>
-<a class="btn" href="hangul.html">Start Practice</a>
+<h2>🎬 Video Lessons</h2>
+<p>Watch Korean Seekho video lessons.</p>
+<a class="btn" href="videos.html">Watch Videos</a>
 </div>
 
 <div class="card">
-<h3>06. Korean Culture & History</h3>
-<p>Discover Korean traditions, history, festivals and culture.</p>
-<a class="btn" href="index.html#sejong">Explore History</a>
+<h2>💬 Daily Conversations</h2>
+<p>Learn everyday Korean expressions.</p>
+<a class="btn" href="conversation.html">Coming Soon</a>
 </div>
 
-</div>
-</section>
-
-<section>
-<h2>🎯 My Learning Progress</h2>
 <div class="card">
-<p>Mark the lessons you have completed.</p>
-<div class="progress"><div id="bar"></div></div>
-<p id="count">0 of 6 lessons completed</p>
-
-<div class="lesson"><label><input type="checkbox" class="task"> Lesson 1 – Hangul Alphabet</label></div>
-<div class="lesson"><label><input type="checkbox" class="task"> Lesson 2 – Korean Vocabulary</label></div>
-<div class="lesson"><label><input type="checkbox" class="task"> Lesson 3 – Daily Conversations</label></div>
-<div class="lesson"><label><input type="checkbox" class="task"> Lesson 4 – Korean Grammar</label></div>
-<div class="lesson"><label><input type="checkbox" class="task"> Lesson 5 – Pronunciation</label></div>
-<div class="lesson"><label><input type="checkbox" class="task"> Lesson 6 – Korean Culture</label></div>
+<h2>📝 Korean Grammar</h2>
+<p>Understand Korean sentence structure and grammar.</p>
+<a class="btn" href="grammar.html">Coming Soon</a>
 </div>
-</section>
 
-<section>
-<h2>🎬 Continue Learning</h2>
-<div class="card" style="text-align:center">
-<p>Watch our video lessons and revise what you have learned.</p>
-<a class="btn" href="videos.html">Watch Video Lessons</a>
-<a class="btn" href="https://www.youtube.com/@KoreanSeekho-j4w" target="_blank">YouTube Channel</a>
+<div class="card">
+<h2>👑 Korean Culture & History</h2>
+<p>Explore Korean history and King Sejong the Great.</p>
+<a class="btn" href="index.html#sejong">Explore</a>
+</div>
+
 </div>
 </section>
 
 <footer>
-<h3>🌸 Korean Seekho 🇰🇷</h3>
-<p>Learn • Practice • Grow</p>
+<h3>Korean Seekho 🇰🇷</h3>
+<p>Learn • Practise • Grow</p>
 <a href="index.html">← Back to Home</a>
 </footer>
-
-<script>
-const tasks=document.querySelectorAll('.task');
-function updateProgress(){
-let done=[...tasks].filter(t=>t.checked).length;
-document.getElementById('bar').style.width=(done/6*100)+'%';
-document.getElementById('count').textContent=done+' of 6 lessons completed';
-}
-tasks.forEach(t=>t.addEventListener('change',updateProgress));
-</script>
 
 </body>
 </html>
