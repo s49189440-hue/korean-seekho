@@ -5,194 +5,230 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Korean Seekho 🇰🇷</title>
-
+<link rel="stylesheet" href="style.css">
 <style>
+:root {
+--cream:#F7F3E9;
+--sage:#DCE7D8;
+--pink:#F3DCE2;
+--green:#526B59;
+--dark:#293B31;
+}
 *{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#fff8f3;
- color:#30364b;
-}
-header{
- background:#f8dce5;
- padding:20px;
- text-align:center;
-}
-header h1{margin:0;color:#a94f68}
-nav{
- display:flex;
- justify-content:center;
- flex-wrap:wrap;
- gap:20px;
- padding:15px;
- background:white;
-}
-nav a{text-decoration:none;color:#30364b;font-weight:bold}
-.hero{
- text-align:center;
- padding:55px 20px;
- background:#e5f3fa;
-}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--dark);font-family:Arial,sans-serif;line-height:1.7}
+header{background:var(--sage);padding:18px;text-align:center}
+header h1{color:var(--green);margin:0;font-size:30px}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;margin-top:12px}
+nav a{color:var(--dark);text-decoration:none;font-weight:bold}
+.hero{padding:55px 20px;text-align:center;background:linear-gradient(135deg,var(--sage),var(--pink))}
 .hero h2{font-size:34px}
-.hero .hangul{font-size:75px;color:#d96f8a}
-.btn{
- display:inline-block;
- background:#d96f8a;
- color:white;
- padding:12px 22px;
- border-radius:12px;
- text-decoration:none;
- margin-top:15px;
-}
-section{padding:35px 20px;text-align:center}
-.cards{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
- gap:18px;
- max-width:950px;
- margin:auto;
-}
-.card{
- background:white;
- padding:25px;
- border-radius:18px;
- box-shadow:0 4px 15px #0000000c;
-}
-.card h3{color:#bd6981}
-.lesson{
- max-width:850px;
- margin:15px auto;
- background:white;
- padding:22px;
- border-radius:15px;
- text-align:left;
-}
-table{width:100%;border-collapse:collapse}
-td,th{padding:10px;border:1px solid #eee}
-th{background:#e5f3fa}
-footer{
- background:#f8dce5;
- text-align:center;
- padding:25px;
-}
+.hero p{max-width:650px;margin:12px auto}
+.btn{display:inline-block;background:var(--green);color:white;text-decoration:none;padding:11px 20px;border-radius:25px;margin:7px;border:0;cursor:pointer}
+.pink{background:#bd8295}
+section{max-width:1100px;margin:auto;padding:38px 6%}
+.heading{text-align:center;color:var(--green);font-size:27px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:white;border-radius:17px;overflow:hidden;padding-bottom:18px;box-shadow:0 4px 14px #00000012}
+.card img{width:100%;height:180px;object-fit:cover}
+.card h3,.card p{padding:0 16px}
+.card .btn{margin-left:16px}
+.content{background:white;border-radius:17px;padding:22px;margin:18px 0}
+.content img{width:100%;max-height:330px;object-fit:cover;border-radius:13px}
+.quiz{background:var(--pink);padding:24px;border-radius:18px;max-width:650px;margin:auto}
+.answer{display:block;width:100%;padding:12px;margin:10px 0;background:white;border:1px solid #c6d3c2;border-radius:10px;text-align:left;cursor:pointer;font-size:16px;color:var(--dark)}
+.answer:hover{background:var(--sage)}
+footer{background:var(--sage);text-align:center;padding:25px}
 </style>
 </head>
-
 <body>
 
 <header>
-<h1>🇰🇷 Korean Seekho</h1>
-<p>Learn Hangul, Build Vocabulary, Speak Korean!</p>
-</header>
-
+<h1>🌸 Korean Seekho 🇰🇷</h1>
+<p>Your Korean Learning Journey Starts Here!</p>
 <nav>
 <a href="#home">Home</a>
-<a href="#courses">Courses</a>
 <a href="#lessons">Lessons</a>
-<a href="#about">About</a>
+<a href="#sejong">King Sejong</a>
+<a href="#history">History</a>
+<a href="#gallery">Gallery</a>
+<a href="#videos">Videos</a>
+<a href="#quiz">Quiz</a>
 </nav>
+</header>
 
 <div class="hero" id="home">
-<h2>Welcome to Korean Seekho!</h2>
-<div class="hangul">한글</div>
-<p>Start your Korean learning journey with us.</p>
-<a href="#lessons" class="btn">Start Learning</a>
+<h2>안녕하세요! Welcome to Korean Seekho</h2>
+<p>Learn Korean from the beginning. Explore Hangul, vocabulary, grammar, conversations and Korean culture through fun lessons.</p>
+<a class="btn" href="videos.html">▶ Watch Videos</a>
+<a class="btn pink" href="https://www.youtube.com/@KoreanSeekho-j4w" target="_blank">YouTube Channel</a>
+<br>
+<a class="btn" href="#lessons">Start Learning ↓</a>
 </div>
-
-<section id="courses">
-<h2>Our Learning Courses 📚</h2>
-<div class="cards">
-
-<div class="card">
-<h3>🔤 Hangul</h3>
-<p>Learn Korean alphabets and pronunciation.</p>
-</div>
-
-<div class="card">
-<h3>📖 Vocabulary</h3>
-<p>Learn useful Korean words every day.</p>
-</div>
-
-<div class="card">
-<h3>💬 Conversations</h3>
-<p>Practice daily Korean conversations.</p>
-</div>
-
-<div class="card">
-<h3>✍️ Grammar</h3>
-<p>Understand basic Korean grammar.</p>
-</div>
-
-<div class="card">
-<h3>🎧 Pronunciation</h3>
-<p>Improve your Korean pronunciation.</p>
-</div>
-
-<div class="card">
-<h3>📝 Weekly Quiz</h3>
-<p>Test your Korean knowledge.</p>
-</div>
-
-</div>
-</section>
 
 <section id="lessons">
-<h2>Beginner Lesson 01</h2>
-
-<div class="lesson">
-<h3>Introduction to Hangul (한글)</h3>
-
-<h4>1. What is Hangul?</h4>
-<p>Hangul is the Korean writing system. It is used to read and write the Korean language.</p>
-
-<h4>2. History of Hangul</h4>
-<p>Hangul was created under King Sejong the Great in the 15th century. It was introduced in 1446 to make reading and writing more accessible.</p>
-
-<h4>3. Basic Consonants</h4>
-<table>
-<tr><th>Letter</th><th>Sound</th></tr>
-<tr><td>ㄱ</td><td>G / K</td></tr>
-<tr><td>ㄴ</td><td>N</td></tr>
-<tr><td>ㄷ</td><td>D / T</td></tr>
-<tr><td>ㄹ</td><td>R / L</td></tr>
-<tr><td>ㅁ</td><td>M</td></tr>
-<tr><td>ㅂ</td><td>B / P</td></tr>
-</table>
-
-<h4>4. Basic Vowels</h4>
-<table>
-<tr><th>Letter</th><th>Sound</th></tr>
-<tr><td>ㅏ</td><td>A</td></tr>
-<tr><td>ㅓ</td><td>EO</td></tr>
-<tr><td>ㅗ</td><td>O</td></tr>
-<tr><td>ㅜ</td><td>U</td></tr>
-<tr><td>ㅡ</td><td>EU</td></tr>
-<tr><td>ㅣ</td><td>I</td></tr>
-</table>
-
-<h4>5. Practice</h4>
-<p>ㄱ + ㅏ = 가 (Ga)</p>
-<p>ㄴ + ㅏ = 나 (Na)</p>
-<p>ㄷ + ㅏ = 다 (Da)</p>
+<h2 class="heading">📚 Explore Our Lessons</h2>
+<div class="cards">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700" alt="Study notebook">
+<h3>01. Hangul Alphabet</h3>
+<p>Learn Korean consonants, vowels and syllable blocks.</p>
+<a class="btn" href="hangul.html">Start Learning</a>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=700" alt="Learning vocabulary">
+<h3>02. Korean Vocabulary</h3>
+<p>Learn useful Korean words for everyday life.</p>
+<a class="btn" href="lessons.html">Explore Lessons</a>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700" alt="Online learning">
+<h3>03. Daily Conversations</h3>
+<p>Practice simple Korean greetings and conversations.</p>
+<a class="btn" href="lessons.html">Practice Now</a>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=700" alt="Books">
+<h3>04. Korean Grammar</h3>
+<p>Understand basic Korean sentence structures.</p>
+<a class="btn" href="lessons.html">Learn Grammar</a>
+</div>
 </div>
 </section>
 
-<section id="about">
-<h2>About Korean Seekho 💗</h2>
-<p>Our goal is to make Korean learning simple, fun and accessible for everyone.</p>
+<section id="sejong">
+<h2 class="heading">👑 King Sejong the Great</h2>
+<div class="content">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/King_Sejong_Statue.jpg" alt="King Sejong monument">
+<h3>The King Behind Hangul</h3>
+<p>King Sejong the Great was the fourth king of the Joseon Dynasty in Korea. He ruled from 1418 to 1450.</p>
+<p>During his time, many ordinary people found it difficult to read and write because Classical Chinese characters were widely used in education and official writing.</p>
+<p>King Sejong wanted ordinary people to have a writing system that was easier to learn. He supported the creation of a new Korean alphabet called Hangul.</p>
+<p>Hangul was created in 1443 and officially introduced in 1446 through a publication called Hunminjeongeum.</p>
+<p>King Sejong also supported education, science, agriculture and cultural development. Today, he is remembered as one of Korea's most respected historical leaders.</p>
+<p><b>Fun Fact:</b> Hunminjeongeum means "The Correct Sounds for the Instruction of the People."</p>
+</div>
+</section>
+
+<section id="history">
+<h2 class="heading">📜 History of Hangul</h2>
+<div class="content">
+<img src="https://images.unsplash.com/photo-1549693578-d683be217e58?w=900" alt="Traditional Korean architecture">
+<h3>The Beginning of a New Writing System</h3>
+<p><b>Before 1443:</b> Classical Chinese characters were widely used in official writing and education.</p>
+<p><b>1443:</b> Hangul was created under King Sejong's leadership.</p>
+<p><b>1446:</b> Hunminjeongeum was published to explain the new writing system.</p>
+<p><b>October 9:</b> South Korea celebrates Hangul Day every year.</p>
+<p>Hangul has a logical structure. Its letters are combined into syllable blocks, making it an interesting writing system to learn.</p>
+</div>
+</section>
+
+<section id="gallery">
+<h2 class="heading">🌷 Korean Photo Gallery</h2>
+<div class="cards">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=700" alt="Korean traditional village">
+<h3>Traditional Korea</h3>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1538485399081-7191377e8241?w=700" alt="Seoul city">
+<h3>Beautiful Seoul</h3>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=700" alt="Korean food">
+<h3>Korean Culture</h3>
+</div>
+</div>
+</section>
+
+<section id="videos">
+<h2 class="heading">🎬 Korean Video Lessons</h2>
+<div class="content" style="text-align:center">
+<p>Watch our Korean learning videos and practice with us!</p>
+<a class="btn" href="videos.html">Watch All Videos</a>
+<a class="btn pink" href="https://www.youtube.com/@KoreanSeekho-j4w" target="_blank">Visit YouTube Channel</a>
+<p>New video lessons will be added here regularly.</p>
+</div>
+</section>
+
+<section id="quiz">
+<h2 class="heading">📝 Test Your Korean Knowledge</h2>
+<p style="text-align:center">Take this mini quiz and check what you have learned!</p>
+<div class="quiz">
+<h3 id="question"></h3>
+<div id="answers"></div>
+<p id="feedback"></p>
+<button class="btn" id="next" style="display:none" onclick="nextQuestion()">Next Question →</button>
+<p id="score"></p>
+</div>
 </section>
 
 <footer>
-<h3>Korean Seekho 🇰🇷</h3>
-<p>Learn Korean Step by Step!</p>
+<h2>🌸 Korean Seekho 🇰🇷</h2>
+<p>Learn • Practice • Explore Korean Culture</p>
+<a href="https://www.youtube.com/@KoreanSeekho-j4w" target="_blank">Visit Our YouTube Channel</a>
+<p>Made for Korean language learners.</p>
 </footer>
+
+<script>
+const questions=[
+{q:"1. Who supported the creation of Hangul?",a:["King Sejong","King Taejo","King Gojong","King Jeongjo"],c:0,f:"King Sejong supported the creation of Hangul."},
+{q:"2. In which year was Hangul created?",a:["1392","1443","1592","1945"],c:1,f:"Hangul was created in 1443."},
+{q:"3. What is the Korean alphabet called?",a:["Kanji","Hiragana","Hangul","Katakana"],c:2,f:"The Korean writing system is called Hangul."},
+{q:"4. When is Hangul Day celebrated in South Korea?",a:["October 9","August 15","January 1","March 1"],c:0,f:"Hangul Day is celebrated on October 9 in South Korea."},
+{q:"5. What does 안녕하세요 mean?",a:["Goodbye","Thank you","Hello","Sorry"],c:2,f:"안녕하세요 is a polite Korean greeting meaning Hello."}
+];
+
+let current=0;
+let points=0;
+let answered=false;
+
+function loadQuestion(){
+answered=false;
+const q=questions[current];
+document.getElementById("question").textContent=q.q;
+document.getElementById("answers").innerHTML="";
+document.getElementById("feedback").textContent="";
+document.getElementById("next").style.display="none";
+q.a.forEach((answer,index)=>{
+const button=document.createElement("button");
+button.className="answer";
+button.textContent=String.fromCharCode(65+index)+". "+answer;
+button.onclick=()=>checkAnswer(index);
+document.getElementById("answers").appendChild(button);
+});
+document.getElementById("score").textContent="Question "+(current+1)+" of "+questions.length;
+}
+
+function checkAnswer(index){
+if(answered)return;
+answered=true;
+const q=questions[current];
+const buttons=document.querySelectorAll(".answer");
+buttons.forEach(button=>button.disabled=true);
+if(index===q.c){
+points++;
+document.getElementById("feedback").textContent="🌸 Correct! "+q.f;
+}else{
+document.getElementById("feedback").textContent="Keep learning! "+q.f;
+}
+document.getElementById("next").style.display="inline-block";
+if(current===questions.length-1){
+document.getElementById("next").textContent="See My Result";
+}
+}
+
+function nextQuestion(){
+if(current<questions.length-1){
+current++;
+loadQuestion();
+}else{
+document.querySelector(".quiz").innerHTML=
+"<h2>🎉 Quiz Completed!</h2><h3>Your Score: "+points+" / "+questions.length+"</h3><p>"+(points===5?"Excellent work!":"Great effort! Keep practising Korean.")+"</p><button class='btn' onclick='location.reload()'>Try Again</button>";
+}
+}
+loadQuestion();
+</script>
 
 </body>
 </html>
-</body>
-<div style="text-align:center; padding:25px;">
-  <a href="videos.html" style="background:#DCEFFA; padding:14px 22px; border-radius:12px; text-decoration:none; color:#26334A; font-weight:bold;">
-    🎬 Watch Our Korean Videos
-  </a>
-</div>
