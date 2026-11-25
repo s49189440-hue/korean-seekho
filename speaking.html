@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speaking Practice | Korean Seekho</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#F7F3E9;color:#293B31;font-family:Arial,sans-serif;line-height:1.7}
+header,footer{background:#DCE7D8;text-align:center;padding:22px}
+header h1{color:#526B59;margin:0}
+nav{margin-top:12px}
+nav a{margin:7px;color:#526B59;text-decoration:none;font-weight:bold}
+.hero{text-align:center;background:#F3DCE2;padding:35px 15px}
+section{max-width:850px;margin:auto;padding:25px 6%}
+h2{text-align:center;color:#526B59}
+.card{background:white;border-radius:16px;padding:20px;margin:18px 0;box-shadow:0 3px 12px #00000010}
+.word{background:#DCE7D8;padding:15px;border-radius:12px;text-align:center;margin:12px 0}
+.korean{font-size:30px;font-weight:bold;color:#526B59}
+button{background:#526B59;color:white;border:0;border-radius:22px;padding:11px 18px;margin:6px;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+#status{font-weight:bold;text-align:center}
+audio{width:100%;margin-top:12px}
+.note{background:#F3DCE2;padding:15px;border-radius:12px}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🌸 Korean Seekho 🇰🇷</h1>
+<p>Listen • Speak • Improve</p>
+<nav>
+<a href="index.html">Home</a>
+<a href="lessons.html">Lessons</a>
+<a href="vocabulary.html">Vocabulary</a>
+<a href="listening.html">Listening</a>
+<a href="videos.html">Videos</a>
+</nav>
+</header>
+
+<div class="hero">
+<h1>🎤 Korean Speaking Practice</h1>
+<p>Listen to Korean words and practise speaking them aloud.</p>
+</div>
+
+<section>
+<div class="card">
+<h2>🌷 How to Practise</h2>
+<p>1. Read the Korean word carefully.</p>
+<p>2. Listen to its pronunciation.</p>
+<p>3. Press Record and speak the word.</p>
+<p>4. Stop the recording and listen to yourself.</p>
+<p>5. Download your recording to keep it.</p>
+</div>
+
+<h2>🗣️ Today's Speaking Practice</h2>
+
+<div class="word">
+<div class="korean">안녕하세요</div>
+<p>Annyeonghaseyo – Hello</p>
+<button onclick="speak('안녕하세요')">🔊 Listen</button>
+</div>
+
+<div class="word">
+<div class="korean">감사합니다</div>
+<p>Gamsahamnida – Thank you</p>
+<button onclick="speak('감사합니다')">🔊 Listen</button>
+</div>
+
+<div class="word">
+<div class="korean">친구</div>
+<p>Chingu – Friend</p>
+<button onclick="speak('친구')">🔊 Listen</button>
+</div>
+
+<div class="word">
+<div class="korean">사랑</div>
+<p>Sarang – Love</p>
+<button onclick="speak('사랑')">🔊 Listen</button>
+</div>
+
+<div class="word">
+<div class="korean">학교</div>
+<p>Hakgyo – School</p>
+<button onclick="speak('학교')">🔊 Listen</button>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>🎙️ Voice Recording Studio</h2>
+<p style="text-align:center">Record your Korean pronunciation below.</p>
+
+<p id="status">Ready to record!</p>
+
+<div style="text-align:center">
+<button id="record">🔴 Start Recording</button>
+<button id="stop" disabled>⏹ Stop Recording</button>
+</div>
+
+<audio id="player" controls style="display:none"></audio>
+
+<div style="text-align:center">
+<a id="download" style="display:none;color:#526B59;font-weight:bold" download="korean-speaking-practice.webm">⬇ Download My Recording</a>
+</div>
+
+<p class="note">Your microphone permission is required. Recording is processed in your browser. It is not automatically sent to the website owner.</p>
+</div>
+</section>
+
+<section>
+<div class="card">
+<h2>⭐ Speaking Tips</h2>
+<ul>
+<li>Speak slowly and clearly.</li>
+<li>Listen to the original word before recording.</li>
+<li>Practise the same word several times.</li>
+<li>Focus on pronunciation rather than speed.</li>
+<li>Compare your recording with the example audio.</li>
+</ul>
+</div>
+</section>
+
+<footer>
+<h3>🌸 Korean Seekho 🇰🇷</h3>
+<p>Every Word Makes You Better!</p>
+<a href="index.html">← Back to Home</a>
+</footer>
+
+<script>
+function speak(text){
+if(!('speechSynthesis' in window)){
+alert('Speech audio is not supported in this browser.');
+return;
+}
+speechSynthesis.cancel();
+const msg=new SpeechSynthesisUtterance(text);
+msg.lang='ko-KR';
+msg.rate=0.8;
+speechSynthesis.speak(msg);
+}
+
+let recorder;
+let chunks=[];
+let stream;
+
+const recordBtn=document.getElementById('record');
+const stopBtn=document.getElementById('stop');
+const statusText=document.getElementById('status');
+const player=document.getElementById('player');
+const download=document.getElementById('download');
+
+recordBtn.onclick=async function(){
+try{
+if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+throw new Error('Microphone recording is not supported here. Open the website in Chrome using HTTPS.');
+}
+stream=await navigator.mediaDevices.getUserMedia({audio:true});
+chunks=[];
+recorder=new MediaRecorder(stream);
+
+recorder.ondataavailable=e=>{
+if(e.data.size>0)chunks.push(e.data);
+};
+
+recorder.onstop=()=>{
+const blob=new Blob(chunks,{type:recorder.mimeType||'audio/webm'});
+const url=URL.createObjectURL(blob);
+player.src=url;
+player.style.display='block';
+download.href=url;
+download.style.display='inline-block';
+statusText.textContent='Recording completed! Listen to your voice.';
+stream.getTracks().forEach(track=>track.stop());
+};
+
+recorder.start();
+recordBtn.disabled=true;
+stopBtn.disabled=false;
+statusText.textContent='🔴 Recording... Speak now!';
+}catch(error){
+statusText.textContent='Microphone unavailable: '+error.message;
+}
+};
+
+stopBtn.onclick=function(){
+if(recorder && recorder.state==='recording'){
+recorder.stop();
+recordBtn.disabled=false;
+stopBtn.disabled=true;
+}
+};
+</script>
+
+</body>
+</html>
